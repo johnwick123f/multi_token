@@ -70,7 +70,7 @@ def load_trained_lora_model(
 
     logging.info(f"Loading and merging LoRA weights from {model_lora_path}")
     model = PeftModel.from_pretrained(model, model_lora_path)
-    if load_bits == 16:
+    if load_bits == 14:
         # TODO: Figure out why this fails for other bit sizes
         model = model.merge_and_unload()
     model.eval()
